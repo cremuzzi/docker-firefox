@@ -5,6 +5,7 @@ RUN apk add --no-cache \
         alsa-utils \
         alsaconf \
         dbus \
+        ffmpeg-libs \
         firefox-esr \
         ttf-dejavu \
         su-exec \
