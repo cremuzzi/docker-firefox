@@ -8,7 +8,6 @@ RUN apk add --no-cache \
         ffmpeg-libs \
         firefox-esr \
         ttf-dejavu \
-        su-exec \
     && addgroup -g 1000 browser \
     && adduser -u 1000 -G browser -s /bin/sh -D browser \
     && mkdir -p /home/browser/.mozilla/ \
