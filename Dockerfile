@@ -17,6 +17,6 @@ USER browser
 
 WORKDIR /home/browser
 
-VOLUME ["/home/browser/.mozilla"]
+VOLUME ["/home/browser/.mozilla","/home/browser/Downloads"]
 
 CMD ["firefox"] 
