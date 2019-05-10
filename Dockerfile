@@ -8,15 +8,15 @@ RUN apk add --no-cache \
         ffmpeg-libs \
         firefox-esr \
         ttf-dejavu \
-    && addgroup -g 1000 browser \
-    && adduser -u 1000 -G browser -s /bin/sh -D browser \
-    && mkdir -p /home/browser/.mozilla/ \
-    && chown -R browser:browser /home/browser/.mozilla/
+    && addgroup -g 1000 firefox \
+    && adduser -u 1000 -G firefox -s /bin/sh -D firefox \
+    && mkdir -p /home/firefox/.mozilla/ \
+    && chown -R firefox:firefox /home/firefox/.mozilla/
 
-USER browser
+USER firefox
 
-WORKDIR /home/browser
+WORKDIR /home/firefox
 
-VOLUME ["/home/browser/.mozilla","/home/browser/Downloads"]
+VOLUME ["/home/firefox/.mozilla","/home/firefox/Downloads"]
 
 CMD ["firefox"] 
