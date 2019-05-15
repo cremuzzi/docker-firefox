@@ -42,7 +42,7 @@ You can find the `audio` GID specific to your host by inspecting the `/etc/group
 For instance:
 
 ```sh
-$(awk -F\: '/audio/{print $3}' /etc/group)
+awk -F\: '/audio/{print $3}' /etc/group
 ```
 
 Here are some common audio GID values:
