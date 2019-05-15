@@ -1,5 +1,7 @@
 FROM alpine:3.9
 
+LABEL maintainer="Carlos Remuzzi <carlosremuzzi@gmail.com>"
+
 RUN apk add --no-cache \
         alsa-lib \
         alsa-utils \
