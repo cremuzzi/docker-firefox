@@ -10,6 +10,7 @@ RUN apk add --no-cache \
         ffmpeg-libs \
         firefox-esr \
         ttf-dejavu \
+        tzdata \
     && addgroup -g 1000 firefox \
     && adduser -u 1000 -G firefox -s /bin/sh -D firefox \
     && mkdir -p /home/firefox/.mozilla/ \
