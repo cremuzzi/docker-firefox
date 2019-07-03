@@ -1,18 +1,28 @@
 FROM debian:9.9-slim
 
+ARG VERSION=67.0.4
+
 LABEL maintainer="Carlos Remuzzi <carlosremuzzi@gmail.com>"
+LABEL version=$VERSION
 
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
         alsa-utils \
+        bzip2 \
+        ca-certificates \
+        curl \
         dbus \
         libavcodec-dev \
-        firefox-esr \
+        libdbus-glib-1-2 \
+        libgtk-3-0 \
+        libxt6 \
         ttf-dejavu \
-        tzdata \
+    && curl -fsL https://download-installer.cdn.mozilla.net/pub/firefox/releases/${VERSION}/linux-x86_64/en-US/firefox-${VERSION}.tar.bz2 \
+        -o firefox.tar.bz2 \
     && useradd -m -u 1000 -s /bin/sh firefox \
+    && tar -C /home/firefox -xf firefox.tar.bz2 \
     && mkdir -p /home/firefox/.mozilla/ \
-    && chown -R firefox:firefox /home/firefox/.mozilla/ \
+    && chown -R firefox:firefox /home/firefox/ \
     && rm -rf /var/lib/apt/lists/*
 
 USER firefox
