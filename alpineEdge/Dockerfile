@@ -1,4 +1,4 @@
-FROM alpine:3.10
+FROM alpine:edge
 
 LABEL maintainer="Carlos Remuzzi <carlosremuzzi@gmail.com>"
 
