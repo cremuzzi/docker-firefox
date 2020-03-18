@@ -32,8 +32,6 @@ The flag `--device /dev/snd` adds your host sound device to the container.
 Permissions to access `/dev/snd` are usually granted to the root user or members of the `audio` group on your system.
 This container runs by default as the unpriviledged user `firefox` with uid `1000`. This is why we need to add the user to the `audio` group, with the same GID as your host `audio` group.
 
-
-
 The flag `--group-add` assigns the correct `audio` GID from your specific host to the `firefox` user inside the container.
 By default Alpine Linux sets `18` as the audio GID (`audio:x:18:`) but this value is usually different on your host.
 Using `--group-add` allows you to take care of these differences and run your container with the right permissions on `/dev/snd`.
@@ -44,13 +42,6 @@ For instance:
 ```sh
 awk -F\: '/audio/{print $3}' /etc/group
 ```
-
-Here are some common audio GID values:
-
-* Debian based: `--group-add=29`
-* Arch Linux: `--group-add=92`
-* CentOS: `--group-add=63`
-
 
 ### Change the default sound device
 
