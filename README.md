@@ -1,6 +1,6 @@
 # How to use this image
 
-## start a Firefox instance
+## Start a Firefox instance
 
 ```sh
 docker run --name firefox \
@@ -15,7 +15,7 @@ The flag `--shm-size=2g` sets 2GB as the size of `/dev/shm` available to the con
 By default Docker will set it to 64MB, leading to frequent crashes of Firefox.
 Further detail on this issue can be found [here](https://bugzilla.mozilla.org/show_bug.cgi?id=1338771#c10)
 
-## audio support
+## Audio support
 
 ```sh
 docker run --name firefox \
@@ -68,7 +68,14 @@ docker run --name firefox \
     cremuzzi/firefox
 ```
 
-## start with persistent storage
+## Hardware acceleration with mesa
+
+The new image version `cremuzzi/firefox:68.8.0` comes with mesa drivers for intel graphics cards, **mesa-dri-intel**.
+This solves the WebGL issue from the previous versions of this image.
+
+To allow hardware acceleration in your dockerized firefox just share /dev/dri with your container with the `--device /dev/dri` run option.
+
+## Start with persistent storage
 
 1. Create a data directory on a suitable volume on your host system, e.g. `/my/own/mozilla` and `/my/own/downloads`
 
