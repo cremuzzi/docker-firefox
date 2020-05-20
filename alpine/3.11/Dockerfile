@@ -9,6 +9,8 @@ RUN apk add --no-cache \
         dbus \
         ffmpeg-libs \
         firefox-esr \
+        mesa-demos \
+        mesa-dri-intel \
         ttf-dejavu \
         tzdata \
     && addgroup -g 1000 firefox \
