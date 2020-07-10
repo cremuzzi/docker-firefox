@@ -1,13 +1,12 @@
-FROM debian:9.9-slim
+FROM debian:10-slim
 
-ARG VERSION=67.0.4
+ARG VERSION=78.0.1
 
 LABEL maintainer="Carlos Remuzzi <carlosremuzzi@gmail.com>"
 LABEL version=$VERSION
 
-RUN apt-get update \
-    && apt-get install --no-install-recommends -y \
-        alsa-utils \
+RUN apt update \
+    && apt install --no-install-recommends -y \
         bzip2 \
         ca-certificates \
         curl \
@@ -16,6 +15,9 @@ RUN apt-get update \
         libdbus-glib-1-2 \
         libgtk-3-0 \
         libxt6 \
+        mesa-utils \
+        libgl1-mesa-dri \
+        pulseaudio \
         ttf-dejavu \
     && curl -fsL https://download-installer.cdn.mozilla.net/pub/firefox/releases/${VERSION}/linux-x86_64/en-US/firefox-${VERSION}.tar.bz2 \
         -o firefox.tar.bz2 \
@@ -25,10 +27,12 @@ RUN apt-get update \
     && chown -R firefox:firefox /home/firefox/ \
     && rm -rf /var/lib/apt/lists/*
 
+COPY --chown=firefox:firefox client.conf /home/firefox/.config/pulse/client.conf
+
 USER firefox
 
 WORKDIR /home/firefox
 
 VOLUME ["/home/firefox/.mozilla","/home/firefox/Downloads"]
 
-CMD ["firefox"] 
+CMD ["firefox/firefox"]
