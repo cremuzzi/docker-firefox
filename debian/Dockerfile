@@ -13,10 +13,10 @@ RUN apt update \
         dbus \
         libavcodec-dev \
         libdbus-glib-1-2 \
+        libgl1-mesa-dri \
         libgtk-3-0 \
         libxt6 \
         mesa-utils \
-        libgl1-mesa-dri \
         pulseaudio \
         ttf-dejavu \
     && curl -fsL https://download-installer.cdn.mozilla.net/pub/firefox/releases/${VERSION}/linux-x86_64/en-US/firefox-${VERSION}.tar.bz2 \
