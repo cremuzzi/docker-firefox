@@ -14,9 +14,11 @@ RUN apk add --no-cache \
     && adduser -u 1000 -D firefox \
     && mkdir -p /home/firefox/.mozilla/ \
     && mkdir -p /home/firefox/.config/pulse \
-    && chown -R firefox:firefox /home/firefox/
-
-COPY --chown=firefox:firefox client.conf /home/firefox/.config/pulse/client.conf
+    && echo "default-server = unix:/run/user/1000/pulse/native" > /home/firefox/.config/pulse/client.conf \
+    && echo "autospawn = no" >> /home/firefox/.config/pulse/client.conf \
+    && echo "daemon-binary = /bin/true" >> /home/firefox/.config/pulse/client.conf \
+    && echo "enable-shm = false" >> /home/firefox/.config/pulse/client.conf \
+    && chown -R firefox:firefox /home/firefox
 
 USER firefox
 
@@ -24,4 +26,4 @@ WORKDIR /home/firefox
 
 VOLUME ["/home/firefox/.mozilla","/home/firefox/Downloads"]
 
-CMD ["firefox"] 
+CMD ["firefox"]
