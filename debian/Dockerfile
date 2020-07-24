@@ -1,6 +1,6 @@
 FROM debian:10-slim
 
-ARG VERSION=78.0.1
+ARG VERSION=78.0.2
 
 LABEL maintainer="Carlos Remuzzi <carlosremuzzi@gmail.com>"
 LABEL version=$VERSION
@@ -24,6 +24,7 @@ RUN apt update \
     && useradd -m -u 1000 -s /bin/sh firefox \
     && tar -C /home/firefox -xf firefox.tar.bz2 \
     && mkdir -p /home/firefox/.mozilla/ \
+    && mkdir -p /home/firefox/Downloads/ \
     && chown -R firefox:firefox /home/firefox/ \
     && rm -rf /var/lib/apt/lists/*
 
