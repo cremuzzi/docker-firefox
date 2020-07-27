@@ -43,4 +43,4 @@ WORKDIR /home/firefox
 
 VOLUME ["/home/firefox/.mozilla","/home/firefox/Downloads"]
 
-CMD ["firefox/firefox"]
+CMD ["firefox"]
