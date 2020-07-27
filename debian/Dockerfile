@@ -29,6 +29,10 @@ RUN apt-get update \
     && mkdir -p /home/firefox/.mozilla/ \
     && mkdir -p /home/firefox/Downloads/ \
     && chown -R firefox:firefox /home/firefox/ \
+    && apt-get remove -y \
+        bzip2 \
+        curl \
+    && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --chown=firefox:firefox client.conf /home/firefox/.config/pulse/client.conf
