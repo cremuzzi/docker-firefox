@@ -28,14 +28,17 @@ RUN apt-get update \
     && ln -s ../lib/firefox/firefox firefox \
     && mkdir -p /home/firefox/.mozilla/ \
     && mkdir -p /home/firefox/Downloads/ \
+    && mkdir -p /home/firefox/.config/pulse \
+    && echo "default-server = unix:/run/user/1000/pulse/native" > /home/firefox/.config/pulse/client.conf \
+    && echo "autospawn = no" >> /home/firefox/.config/pulse/client.conf \
+    && echo "daemon-binary = /bin/true" >> /home/firefox/.config/pulse/client.conf \
+    && echo "enable-shm = false" >> /home/firefox/.config/pulse/client.conf \
     && chown -R firefox:firefox /home/firefox/ \
     && apt-get remove -y \
         bzip2 \
         curl \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
-
-COPY --chown=firefox:firefox client.conf /home/firefox/.config/pulse/client.conf
 
 USER firefox
 
