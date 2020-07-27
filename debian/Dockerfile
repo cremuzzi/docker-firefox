@@ -22,7 +22,10 @@ RUN apt-get update \
     && curl -fsL https://download-installer.cdn.mozilla.net/pub/firefox/releases/${VERSION}/linux-x86_64/en-US/firefox-${VERSION}.tar.bz2 \
         -o firefox.tar.bz2 \
     && useradd -m -u 1000 -s /bin/sh firefox \
-    && tar -C /home/firefox -xf firefox.tar.bz2 \
+    && tar -C /usr/lib/ -xf firefox.tar.bz2 \
+    && rm firefox.tar.bz2 \
+    && cd /usr/bin \
+    && ln -s ../lib/firefox/firefox firefox \
     && mkdir -p /home/firefox/.mozilla/ \
     && mkdir -p /home/firefox/Downloads/ \
     && chown -R firefox:firefox /home/firefox/ \
