@@ -5,8 +5,8 @@ ARG VERSION=78.0.2
 LABEL maintainer="Carlos Remuzzi <carlosremuzzi@gmail.com>"
 LABEL version=$VERSION
 
-RUN apt update \
-    && apt install --no-install-recommends -y \
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y \
         bzip2 \
         ca-certificates \
         curl \
