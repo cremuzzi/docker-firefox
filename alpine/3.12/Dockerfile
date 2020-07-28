@@ -13,6 +13,7 @@ RUN apk add --no-cache \
         tzdata \
     && adduser -u 1000 -D firefox \
     && mkdir -p /home/firefox/.mozilla/ \
+    && mkdir -p /home/firefox/Downloads/ \
     && mkdir -p /home/firefox/.config/pulse \
     && echo "default-server = unix:/run/user/1000/pulse/native" > /home/firefox/.config/pulse/client.conf \
     && echo "autospawn = no" >> /home/firefox/.config/pulse/client.conf \
