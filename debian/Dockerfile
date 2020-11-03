@@ -1,6 +1,6 @@
 FROM debian:10-slim
 
-ARG VERSION=81.0.2
+ARG VERSION=82.0.2
 
 LABEL maintainer="Carlos Remuzzi <carlosremuzzi@gmail.com>"
 LABEL version=$VERSION
