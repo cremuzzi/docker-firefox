@@ -24,7 +24,6 @@ RUN apt-get update \
   && chown -R firefox:firefox /home/firefox/ \
   && rm -rf /var/lib/apt/lists/*
 
-
 FROM base as runtime
 ARG VERSION=85.0.2
 LABEL version=$VERSION
