@@ -1,5 +1,10 @@
 FROM debian:10-slim as base
 LABEL maintainer="Carlos Remuzzi <carlosremuzzi@gmail.com>"
+LABEL org.label-schema.description="Dockerized Firefox"
+LABEL org.label-schema.name="firefox"
+LABEL org.label-schema.schema-version="1.0"
+LABEL org.label-schema.vcs-url="https://github.com/cremuzzi/docker-firefox"
+
 RUN apt-get update \
   && apt-get install --no-install-recommends -y \
     bzip2 \
@@ -25,7 +30,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 FROM base as runtime
-ARG VERSION=85.0.2
+ARG VERSION=86.0
 LABEL version=$VERSION
 ADD https://download-installer.cdn.mozilla.net/pub/firefox/releases/${VERSION}/linux-x86_64/en-US/firefox-${VERSION}.tar.bz2 firefox.tar.bz2
 RUN tar -C /usr/lib/ -xf firefox.tar.bz2 \
