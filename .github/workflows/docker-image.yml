@@ -5,9 +5,16 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build_alpine:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file ./debian/Dockerfile --tag firefox:$(date +%s)
+    - name: Build the Debian based Docker image
+      run: docker build . --file ./alpine/Dockerfile --tag firefox:$(date +%s)-alpine
+  build_debian:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Debian based Docker image
+      run: docker build . --file ./debian/Dockerfile --tag firefox:$(date +%s)-debian
+
