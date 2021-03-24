@@ -9,7 +9,6 @@ RUN apk add --no-cache \
     dbus \
     ffmpeg-libs \
     firefox \
-    glxinfo \
     mesa-demos \
     mesa-dri-intel \
     pulseaudio \
