@@ -1,11 +1,15 @@
-FROM alpine:3.12
-
+FROM alpine:3.13
 LABEL maintainer="Carlos Remuzzi <carlosremuzzi@gmail.com>"
+LABEL org.label-schema.description="Dockerized Firefox based on alpine linux"
+LABEL org.label-schema.name="firefox"
+LABEL org.label-schema.schema-version="1.0"
+LABEL org.label-schema.vcs-url="https://github.com/cremuzzi/docker-firefox"
 
 RUN apk add --no-cache \
     dbus \
     ffmpeg-libs \
     firefox \
+    glxinfo \
     mesa-demos \
     mesa-dri-intel \
     pulseaudio \
