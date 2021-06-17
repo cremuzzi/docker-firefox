@@ -30,7 +30,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 FROM base as runtime
-ARG VERSION=89.0
+ARG VERSION=89.0.1
 LABEL version=$VERSION
 ADD https://download-installer.cdn.mozilla.net/pub/firefox/releases/${VERSION}/linux-x86_64/en-US/firefox-${VERSION}.tar.bz2 firefox.tar.bz2
 RUN tar -C /usr/lib/ -xf firefox.tar.bz2 \
