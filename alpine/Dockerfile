@@ -1,4 +1,4 @@
-FROM alpine:3.13
+FROM alpine:3.14
 LABEL maintainer="Carlos Remuzzi <carlosremuzzi@gmail.com>"
 LABEL org.label-schema.description="Dockerized Firefox based on alpine linux"
 LABEL org.label-schema.name="firefox"
