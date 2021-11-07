@@ -4,21 +4,18 @@ on:
   push:
     branches:
       - master
+    tags:
+      - '*-buster'
   pull_request:
     branches:
       - master
+    tags:
+      - '*-buster'
 
 jobs:
-  build_alpine:
-    runs-on: ubuntu-20.04
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build the Debian based Docker image
-      run: docker build . --file ./alpine/Dockerfile --tag firefox:$(date +%s)-alpine
   build_debian:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
     - name: Build the Debian based Docker image
       run: docker build . --file ./debian/Dockerfile --tag firefox:$(date +%s)-debian
-
