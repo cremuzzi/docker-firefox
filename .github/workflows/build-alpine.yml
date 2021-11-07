@@ -4,18 +4,18 @@ on:
   push:
     branches:
       - master
-    tags:
-      - '*-alpine*'
+    paths:
+      - "alpine/Dockerfile"
   pull_request:
     branches:
       - master
-    tags:
-      - '*-alpine*'
+    paths:
+      - "alpine/Dockerfile"
 
 jobs:
-  build_alpine:
+  build:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Debian based Docker image
+    - name: Build the Alpine based container image
       run: docker build . --file ./alpine/Dockerfile --tag firefox:$(date +%s)-alpine

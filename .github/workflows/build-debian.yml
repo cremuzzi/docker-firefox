@@ -4,18 +4,18 @@ on:
   push:
     branches:
       - master
-    tags:
-      - '*-buster'
+    paths:
+      - "debian/Dockerfile"
   pull_request:
     branches:
       - master
-    tags:
-      - '*-buster'
+    paths:
+      - "debian/Dockerfile"
 
 jobs:
-  build_debian:
+  build:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Debian based Docker image
+    - name: Build the Debian based container image
       run: docker build . --file ./debian/Dockerfile --tag firefox:$(date +%s)-debian
