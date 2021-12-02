@@ -1,4 +1,4 @@
-FROM debian:10-slim as base
+FROM docker.io/library/debian:10-slim as base
 LABEL maintainer="Carlos Remuzzi <carlosremuzzi@gmail.com>"
 LABEL org.label-schema.description="Dockerized Firefox"
 LABEL org.label-schema.name="firefox"
