@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:3.15
+FROM docker.io/library/alpine:3.16
 
 LABEL org.opencontainers.image.authors="Carlos Remuzzi <carlosremuzzi@gmail.com>"
 LABEL org.opencontainers.image.description="Containerized Firefox based on alpine linux"
