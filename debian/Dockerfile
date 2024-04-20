@@ -1,4 +1,4 @@
-FROM docker.io/library/debian:10-slim as base
+FROM docker.io/library/debian:12-slim as base
 
 LABEL org.opencontainers.image.authors="Carlos Remuzzi <carlosremuzzi@gmail.com>"
 LABEL org.opencontainers.image.description="Dockerized Firefox"
@@ -17,7 +17,7 @@ RUN apt-get update \
     libxt6 \
     mesa-utils \
     pulseaudio \
-    ttf-dejavu \
+    fonts-dejavu \
   && useradd -m -u 1000 -s /bin/sh firefox \
   && mkdir -p /home/firefox/.mozilla/ \
   && mkdir -p /home/firefox/Downloads/ \
@@ -30,7 +30,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 FROM base as runtime
-ARG VERSION=105.0.1
+ARG VERSION=125.0.1
 LABEL version=$VERSION
 ADD https://download-installer.cdn.mozilla.net/pub/firefox/releases/${VERSION}/linux-x86_64/en-US/firefox-${VERSION}.tar.bz2 firefox.tar.bz2
 RUN tar -C /usr/lib/ -xf firefox.tar.bz2 \
