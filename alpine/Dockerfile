@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:3.16
+FROM docker.io/library/alpine:3.19
 
 LABEL org.opencontainers.image.authors="Carlos Remuzzi <carlosremuzzi@gmail.com>"
 LABEL org.opencontainers.image.description="Containerized Firefox based on alpine linux"
@@ -10,7 +10,7 @@ RUN apk add --no-cache \
     ffmpeg-libs \
     firefox \
     mesa-demos \
-    mesa-dri-intel \
+    mesa-dri-gallium \
     pulseaudio \
     ttf-dejavu \
     tzdata \
