@@ -1,4 +1,4 @@
-FROM docker.io/library/alpine:3.19
+FROM docker.io/library/alpine:3.20.0
 
 LABEL org.opencontainers.image.authors="Carlos Remuzzi <carlosremuzzi@gmail.com>"
 LABEL org.opencontainers.image.description="Containerized Firefox based on alpine linux"
@@ -30,4 +30,4 @@ WORKDIR /home/firefox
 
 VOLUME ["/home/firefox/.mozilla","/home/firefox/Downloads"]
 
-CMD ["firefox"]
+CMD ["/usr/bin/firefox","--new-instance"]
