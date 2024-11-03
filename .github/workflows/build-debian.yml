@@ -1,21 +1,32 @@
-name: Container build from Debian
+name: Buildah Build Debian based
 
 on:
   push:
     branches:
       - master
+      - develop
     paths:
-      - "debian/Dockerfile"
+      - "debian/Containerfile"
   pull_request:
     branches:
       - master
     paths:
-      - "debian/Dockerfile"
+      - "debian/Containerfile"
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    name: Build image
+    runs-on: ubuntu-24.04
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Debian based container image
-      run: docker build . --file ./debian/Dockerfile --tag firefox:$(date +%s)-debian
+    - uses: actions/checkout@v4
+
+    # https://github.com/redhat-actions/buildah-build
+    - name: Buildah build
+      id: build-image
+      uses: redhat-actions/buildah-build@v2
+      with:
+        image: firefox
+        tags: ${{ github.ref_name }}-debian
+        containerfiles: |
+          ./debian/Containerfile
