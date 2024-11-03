@@ -1,7 +1,7 @@
 FROM docker.io/library/alpine:3.20.3
 
 LABEL org.opencontainers.image.authors="Carlos Remuzzi <carlosremuzzi@gmail.com>"
-LABEL org.opencontainers.image.description="Containerized Firefox based on Alpine linux"
+LABEL org.opencontainers.image.description="Containerized Firefox based on alpine linux"
 LABEL org.opencontainers.image.title="firefox"
 LABEL org.opencontainers.image.source="https://github.com/cremuzzi/docker-firefox"
 
