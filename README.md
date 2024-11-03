@@ -5,15 +5,10 @@
 ```sh
 docker run \
     --network host \
-    --shm-size=2g \
     -e DISPLAY \
     -v $HOME/.Xauthority:/home/firefox/.Xauthority:ro \
     cremuzzi/firefox
 ```
-
-The flag `--shm-size=2g` sets 2GB as the size of `/dev/shm` available to the container.
-By default Docker will set it to 64MB, leading to frequent crashes of Firefox.
-Further detail on this issue can be found [here](https://bugzilla.mozilla.org/show_bug.cgi?id=1338771#c10)
 
 ## Audio support with Pulseaudio
 
@@ -24,7 +19,6 @@ Just run a container with the additional volume `/run/user/1000/pulse` like this
 ```sh
 docker run \
     --network host \
-    --shm-size=2g \
     -e DISPLAY \
     -v $HOME/.Xauthority:/home/firefox/.Xauthority:ro \
     -v /run/user/1000/pulse:/run/user/1000/pulse:ro \
@@ -47,7 +41,6 @@ To enable hardware acceleration in your dockerized firefox just share /dev/dri w
 ```sh
 docker run \
     --network host \
-    --shm-size=2g \
     -e DISPLAY \
     -v $HOME/.Xauthority:/home/firefox/.Xauthority:ro \
     -v /run/user/1000/pulse:/run/user/1000/pulse:ro \
