@@ -1,4 +1,4 @@
-name: Container build from Alpine 
+name: Buildah Build Alpine based
 
 on:
   push:
@@ -14,8 +14,18 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    name: Build image
+    runs-on: ubuntu-24.04
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Alpine based container image
-      run: docker build . --file ./alpine/Dockerfile --tag firefox:$(date +%s)-alpine
+    - uses: actions/checkout@v4
+
+    # https://github.com/redhat-actions/buildah-build
+    - name: Buildah build
+      id: build-image
+      uses: redhat-actions/buildah-build@v2
+      with:
+        image: firefox
+        tags: ${{ github.ref_name }}-alpine
+        containerfiles: |
+          ./alpine/Containerfile
